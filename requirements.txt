@@ -1,0 +1,11 @@
+# basic libraries
+jupyter
+numpy
+pandas
+
+# machine learning libraries
+scikit-learn
+
+# plotting libraries
+matplotlib
+seaborn
