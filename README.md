@@ -43,7 +43,7 @@ It was not immediately clear what customer demographics would be best to target 
 
 The analysis compared several classifier models including Logistic Regression, K-Nearest Neighbors, Decision Trees, and Support Vector classifier. Hyperparameters tuning for each was also performed to determine the best performing model.
 
-For this analysis, the findings were that 
+For this analysis, the SVC classifier appears to be the best performing classifier, but takes a long time to train. In contrast, the Decision Tree and Logistic Regression classifiers seem to perform relatively well, while the K-Nearest Neighbor classifier is slightly weaker when hyperparameters are tuned. All three seem to train relatively fast compared to the Support Vector classifier.
 
 ## Recommendations
 
@@ -55,7 +55,7 @@ Based on the model, the recommendations for improving the efficiency of marketin
 
 # Next Steps
 
-While several models were analyzed, and tuning of their parameters was performed, based on the results of the logistic regression classifier coefficients, it suggests that feature selection may be effective at deriving similar predictive accuracy with much lower computting requirements.
+While several models were analyzed, and tuning of their parameters was performed, based on the results of the logistic regression classifier coefficients, it suggests that feature selection may be effective at deriving similar predictive accuracy with much lower computing requirements. As a next step, it would be interesting to introduce a feature selection step in the processing pipeline to reduce the size of the model and see whether similar performance can be achieved with faster training times.
 
 Also, since the target classes are not evenly distributed, the yield, or successful conversion rate of subscribers is only about 12%, a different analysis like F1 score or ROC/AUC curves may be a better method to compare the models.
 
