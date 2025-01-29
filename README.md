@@ -35,45 +35,28 @@ The dataset comes from the [UC Irvine Machine Learning Repository](https://archi
 
 A dataset consisting of $41k$ samples from several direct marketing campaigns run by a Portuguese banking institution was analyzed to determine what factors predict whether customers would subscribe to a term deposit product.
 
-After cleaning and preparing the data for analysis, the model, presented in [prompt_III.ipynb](prompt_III.ipynb), was constructed that was able to demonstrate the ability to predict the price of a car based on its feature with a $R^2$ correlation coefficient of roughly $0.665$ on the test data set.
+After cleaning and preparing the data for analysis, the model, presented in [prompt_III.ipynb](prompt_III.ipynb), was constructed that was able to predict with accuracy of $90%$ whether customers would subscribe to a deposit product.
 
-The model suggests the factors that most influence price are mileage and year. Newer used vehicles with low miles have the most potential to sell for more.
+A key finding is that when the banking institution decides to run the marketing campaign may be as significant as who, or which customers, the bank targets. For example, March seems to be a month that results in higher probability of successful subscription, probably because of quarterly economy reports. Similarly, strong quarterly economic indicators like consumer price index, or consumer confidence appear to result in successful conversions. In contrast, uncertainty in employment rates may make customers hesitant to invest in products that are less liquid.
 
-![importance](images/feature_importance.png)
+It was not immediately clear what customer demographics would be best to target to predict subscription to deposit products.
 
+The analysis compared several classifier models including Logistic Regression, K-Nearest Neighbors, Decision Trees, and Support Vector classifier. Hyperparameters tuning for each was also performed to determine the best performing model.
 
-Vehicles with more than 680k miles don't sell for more than $50k. Newer cars are likely correlated with less mileage, and may also have features and amenities that drivers prefer.
+For this analysis, the findings were that 
 
-![mileage](images/odometer_price.png)
+## Recommendations
 
-
-**Recommendations**
-
-Based on the model, the recommendations for used vehicle inventory include the following:
-- Newer model vehicles
-- Low mileage vehicles
-- Diesel vehicles
-- Ram made vehicles
-- pickups or trucks
-- 10 cylinders vehicles
-- 4wd vehicles
+Based on the model, the recommendations for improving the efficiency of marketing campaigns seem to be to target marketing campaign at times when the economy is strong:
+- high consumer price index
+- high consumer confidence
+- strong lending rates (`euribor3m`)
+- March
 
 # Next Steps
 
-The data appears to favor certain types of vehicles that may not represent fairly the set of used vehicles generally available. The count of values by feature is shown in the figure below.
+While several models were analyzed, and tuning of their parameters was performed, based on the results of the logistic regression classifier coefficients, it suggests that feature selection may be effective at deriving similar predictive accuracy with much lower computting requirements.
 
-![features](images/cat_features.png)
+Also, since the target classes are not evenly distributed, the yield, or successful conversion rate of subscribers is only about 12%, a different analysis like F1 score or ROC/AUC curves may be a better method to compare the models.
 
-The distribution of vehicle mileage is shown below.
-
-![features](images/odometer-dist.png)
-
-The vehicles in the dataset are predominantly recent model vehicles with 4, 6, or 8 cylinder gas engines and automatic transmission, in good or excellent condition, with around 100k miles. This is consistent with common observations of cars on the road in general, and most vehicles have 100k mile warranty. Many owners choose to sell their cars before the warranty expires. However, the vehicles in the dataset analyzed heavily favor 4wd vehicles. That may not represent generally used vehicles that are available for sale. 
-
-![features](images/cat_features_manufacturer_state.png)
-
-As the chart above suggests, the number of vehicles vary greatly from state to state. Driving conditions can vary greatly depending on the types of weather conditions. Also, depending on whether the state is largely rural, or contains heavily populated urban centers, all these factors may impact the type of vehicle, or buyer preference by area. It may make sense to analyze the data by region or state to see whether there are regional preferences.
-
-Possible next steps include:
-- Evaluating with a dataset that is more representative of the set of vehicles generally available.
-- Evaluating by state to see if there are regional preferences.
+As for narrowing the target customer profile, it seems the product the banking institution is targeting is a product that makes cash assets illiquid for a period of time. The data shows that customers are amenable to such products when the economy is strong, and hesitant when there is uncertainty in the market or employment rates. Retirees and students seem to respond well, while working professionals seem less inclined. The recommendation is for the banking institution to explore what demographics have a tendency to invest in these types of products, and also to compare how their product offerings in this area compares to industry benchmark and competitors. They may want to consider refining their product by investigating whether rates or term periods or withdrawal penalties are affecting the success of their campaigns.
